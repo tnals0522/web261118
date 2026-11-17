@@ -165,4 +165,4 @@ footer {
 .like.liked { color: crimson; }
 
 .state-empty { display: none; color: #fff; }
-.board.is-empty + .state-empty { display: block; }
+.board.is-empty + .state-empty { display: block; } 

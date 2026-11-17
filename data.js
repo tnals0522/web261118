@@ -1,4 +1,4 @@
-// data.js : 내 영화 5편 데이터 / 김수민(26) / 11주차
+// data.js : 내 영화 5편 데이터 / 김수민(26) / 11주차 
 // 영화 한 편 = 객체 하나. 키 5개 : title, year, date, rating, poster
 const movies = [
     {

@@ -113,6 +113,6 @@ function getView() {
 document.getElementById("sort").addEventListener("change", (e) => renderCards(getView()));
 
 document.querySelector(".board").addEventListener("click", (e) => { if (e.target.classList.contains("like")) { e.target.classList.toggle("liked"); updateLikeCount(); } });
-//function (e) { console.log(this, e.target); }차이:function (e) { console.log(this, e.target);을 치고 하트를 누르면 콘솔에 표시가 나오고 화살표로 하면 콘솔에 안나온다.
+//function (e) { console.log(this, e.target); }차이:function (e) { console.log(this, e.target);을 치고 하트를 누르면 콘솔에 표시가 나오고 화살표로 하면 콘솔에 안나온다. 
 function updateLikeCount() { document.getElementById("likeCount").textContent = document.querySelectorAll(".liked").length; }
 document.getElementById("q").addEventListener("keydown", (e) => { if (e.key === "Escape") { e.target.value = ""; renderCards(getView()); } });
