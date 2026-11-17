@@ -40,6 +40,7 @@
                 <!-- index.html : <div class="toolbar"> 바로 다음 줄에 -->
                 <input id="q" type="search" placeholder="영화 제목 검색">
                 <p id="count"></p>
+                <p>찜<span id="likeCount">0</span>편</p>
                 <label for="sort">정렬</label>
                 <select id="sort">
                     <option value="rating">평점순</option>
@@ -47,20 +48,16 @@
                     <option value="title">제목순</option>
                 </select>
             </div>
-            <div class="board" id="board">
+            <section class="board" id="board"></section>
+            <p class="state-empty">조건에 맞는 영화가 없습니다.</p>
 
-
-
-
-
-
-
-            </div>
             <section id="about">
                 <h2>이 보드에 대하여</h2>
                 <p>만든 사람과 영화를 고른 기준을 한두 문장으로 적습니다.</p>
                 <p>포스터와 영화 정보는 TMDB 검색 결과를 그대로 옮겼습니다.</p>
             </section>
+            
+
     </main>
 
     <footer>

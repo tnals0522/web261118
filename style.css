@@ -163,3 +163,6 @@ footer {
 .like { border: none; background: none; font-size: 1.4rem; color: #bbb; cursor: pointer; }
 
 .like.liked { color: crimson; }
+
+.state-empty { display: none; color: #fff; }
+.board.is-empty + .state-empty { display: block; }

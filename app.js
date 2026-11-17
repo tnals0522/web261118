@@ -55,6 +55,7 @@ console.log(posterUrl(movies[0].poster, "w342"));
 // renderCards : 영화 배열 ⇒ 보드에 카드 생성(반환값 없음)
 const renderCards = (list) => {
     const board = document.querySelector(".board");
+    
     board.innerHTML = "";
     for (const m of list) {
         const card = document.createElement("article");
@@ -73,7 +74,11 @@ const renderCards = (list) => {
         board.appendChild(card);
 
         document.querySelector("#count").textContent = list.length + "편";
+
+        updateLikeCount();
+        
     }
+    if (list.length === 0) { board.classList.add("is-empty"); } else { board.classList.remove("is-empty"); }
 }
 // sortBy : 영화 배열, 키 이름, 내림차순 여부 ⇒ 정렬한 새 배열(원본은 그대로)
 const sortBy = (list, key, desc) => {
@@ -94,15 +99,20 @@ applySort();
 
 // 검색창 : 글자를 칠 때마다 제목으로 걸러서 다시 그리기(12.6절)
 document.getElementById("q").addEventListener("input", (e) => {
- renderCards(getView());});
+    renderCards(getView());
+});
 
 // getView : 없음 ⇒ 검색어로 거른 뒤 선택 상자 기준으로 정렬한 새 배열
 function getView() {
-  const keyword = document.getElementById("q").value.trim().toLowerCase();
-  const found = movies.filter(m => m.title.toLowerCase().includes(keyword));
-  const key = document.getElementById("sort").value;
-  return sortBy(found, key, key !== "title");
+    const keyword = document.getElementById("q").value.trim().toLowerCase();
+    const found = movies.filter(m => m.title.toLowerCase().includes(keyword));
+    const key = document.getElementById("sort").value;
+    return sortBy(found, key, key !== "title");
 }
 
-document.getElementById("sort").addEventListener(() => renderCards(getView()));
-document.querySelector(".board").addEventListener("click", (e) => { if(e.target.classList.contains("like")) { e.target.classList.toggle("liked"); updateLikeCount(); } });
+document.getElementById("sort").addEventListener("change", (e) => renderCards(getView()));
+
+document.querySelector(".board").addEventListener("click", (e) => { if (e.target.classList.contains("like")) { e.target.classList.toggle("liked"); updateLikeCount(); } });
+//function (e) { console.log(this, e.target); }차이:function (e) { console.log(this, e.target);을 치고 하트를 누르면 콘솔에 표시가 나오고 화살표로 하면 콘솔에 안나온다.
+function updateLikeCount() { document.getElementById("likeCount").textContent = document.querySelectorAll(".liked").length; }
+document.getElementById("q").addEventListener("keydown", (e) => { if (e.key === "Escape") { e.target.value = ""; renderCards(getView()); } });
